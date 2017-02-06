@@ -5,7 +5,7 @@ func checkUnique_withDictionary(str: String?) -> Bool {
   }
 
   var dict: Dictionary<String, Int> = [:]
-  let cnt = target.unicodeScalars.count
+  let cnt = target.characters.count
   for i in 0 ..< cnt {
     if let i_ = target.index(target.startIndex, offsetBy: i, limitedBy: target.endIndex) {
       let ci = String(target[i_])
@@ -25,7 +25,7 @@ func checkUnique(str: String?) -> Bool {
     return false
   }
 
-  let count = target.unicodeScalars.count
+  let count = target.characters.count
   for i in 0 ..< count {
     if let i_ = target.index(target.startIndex, offsetBy: i, limitedBy: target.endIndex) {
       let ci = target[i_]
