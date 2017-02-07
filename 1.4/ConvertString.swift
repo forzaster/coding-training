@@ -1,6 +1,6 @@
-func convertString(str: String?) -> Bool {
+func convertString(str: String?) -> String? {
   guard let target = str else {
-    return false
+    return nil
   }
 
   let carray = target.characters
@@ -13,11 +13,12 @@ func convertString(str: String?) -> Bool {
     }
   }
 
-  print(ret.joined(separator: ""))
-  return true
+  return ret.joined(separator: "")
 }
 
 
 print("Input1>", terminator: "")
 let line: String? = readLine()
-let _ = convertString(str: line)
+if let result = convertString(str: line) {
+  print(result)
+}
