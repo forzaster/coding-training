@@ -1,4 +1,4 @@
-func findKthItem(item: Item, k: Int) -> Item? {
+func findKthItemFromLast(item: Item, k: Int) -> Item? {
   var idx: Int = 1
   var ite: Item? = item
   var ret: Item? = item
@@ -21,7 +21,7 @@ if item != nil {
   if inStr != nil {
     let k: Int = Int(inStr!)!
     print (String(k) + "th item>>")
-    let ret = findKthItem(item: item!, k: k)
+    let ret = findKthItemFromLast(item: item!, k: k)
     ret?.dump()
   }
 }
