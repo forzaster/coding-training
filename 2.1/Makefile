@@ -1,7 +1,7 @@
 TARGET = main
 
 SWIFTC = swiftc
-SOURCES = main.swift Item.swift	CheckDuplication.swift
+SOURCES = main.swift CheckDuplication.swift ../2.common/Item.swift	
 
 $(TARGET): $(SOURCES)
 	$(SWIFTC) $^ -o $@
