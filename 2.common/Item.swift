@@ -21,6 +21,11 @@ class Item {
     return mIdx == item.mIdx
   }
 
+  func copyFrom(_ item: Item) {
+    mIdx = item.mIdx
+    mNext = item.next()
+  }
+
   func dump() {
     print(String(mIdx))
   }
