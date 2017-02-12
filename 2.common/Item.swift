@@ -26,6 +26,10 @@ class Item {
     mNext = item.next()
   }
 
+  func getValue() -> Int {
+    return mIdx
+  }
+
   func dump() {
     print(String(mIdx))
   }
