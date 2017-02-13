@@ -54,13 +54,19 @@ class Item {
   }
 
   static func dumpList(_ i: Item?) {
-    print("dumpList-----")
+    if i == nil {
+      return
+    }
     var item = i
     repeat {
-      item?.dump()
+      print(String(item!.getValue()), terminator: "")
       item = item?.next()
+      if item != nil {
+        print("->", terminator: "")
+      } else {
+        print ("")
+      }
     } while item != nil
-    print("-------------")
   }
 
 }
