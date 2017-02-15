@@ -1,24 +1,46 @@
-func searchSame(_ item: Item) -> Item? {
-  var next = item.next()
+func makeLoop(_ item: Item, pos: Int) -> Item? {
+  var next: Item? = item
+  var idx: Int = 0
+  var loopHead: Item? = nil
+  var prev: Item? = nil
   while next != nil {
-    if item.isEqual(next!) {
-      return next
+    if idx == pos {
+      loopHead = next
     }
+    prev = next
+    idx += 1
     next = next!.next()
   }
-  return next
+  if prev != nil && loopHead != nil {
+    let _ = prev!.setNext(loopHead!)
+  }
+  return item
 }
 
-let list = Item.loadFromStdIn()
-var item: Item? = list
-var ret: Item? = nil
-while item != nil {
-  ret = searchSame(item!)
-  if ret != nil {
-    break;
+func searchLoopHead(_ item: Item) -> Item? {
+  var a: Item? = item
+  var b: Item? = item
+  var isOnce: Bool = false
+  while a != nil && b != nil {
+    a = a!.next()
+    b = isOnce ? b!.next() : b!.next()?.next()
+    if (a!.isEqual(b!)) {
+      if isOnce {
+        return a
+      } else {
+        isOnce = true
+        a = item
+      }
+    }
   }
-  item = item!.next()
+  return nil
 }
+
+let list_ = Item.loadFromStdIn()
+print("Input loop head pos>", terminator:"")
+let loopHeadIdx = Int(readLine()!)
+let list = makeLoop(list_, pos: loopHeadIdx!)
+var ret: Item? = searchLoopHead(list!)
 
 if ret != nil {
   print(String(ret!.getValue()))
