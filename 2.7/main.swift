@@ -14,7 +14,7 @@ func check(head: Item, next: Item?) -> Item? {
 
 let list = Item.loadFromStdIn()
 let headCandidate = check(head: list, next: list.next())
-if headCandidate != nil && headCandidate!.isEqual(list) {
+if let _ = headCandidate?.isEqual(list) {
   print("OK")
 } else {
   print("NG")
